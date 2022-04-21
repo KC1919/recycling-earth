@@ -45,6 +45,14 @@ router.get("/",async (req,res)=>{
         res.render("home",{"data":data});
     }
 })
+
+router.get("/know-more",(req,res)=>{
+    res.render("know-more");
+})
+
+router.get("/chat-bot",(req,res)=>{
+    res.render("chat-bot");
+})
 router.get("/secret",verifyGuest,(req,res)=>{
     res.render("secret");
 })

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Open+Sans&family=Roboto:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Query-Bot</title>
+    <style>
+      body {
+        background-image: url("images/finalbot.jpg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+      }
+
+      h1 {
+        text-align: center;
+        color: black;
+        /* text-decoration: none; */
+      }
+    </style>
+  </head>
+
+  <body style="background-color: #e9efc0">
+    <div class="welcome">
+      <h1>FAQ'S on Waste Management</h1>
+    </div>
+    <div
+      style="height: 550px; width: 90%; margin-top: 8%; margin-left: 24%"
+      id="webchat"
+      role="main"
+    ></div>
+    <script>
+      // Set  the CSS rules.
+      const styleSet = window.WebChat.createStyleSet({
+        bubbleBackground: "rgba(0, 0, 255, .1)",
+        bubbleFromUserBackground: "rgba(0, 255, 0, .1)",
+        rootHeight: "100%",
+        rootWidth: "60%",
+        backgroundColor: "#EEEEEE",
+      });
+
+      styleSet.textContent = {
+        ...styleSet.textContent,
+        fontFamily: "'Roboto', 'Arial', sans-serif",
+        fontWeight: "bold",
+      };
+
+      const avatarOptions = {
+        botAvatarImage:
+          "https://cdn-icons.flaticon.com/png/512/1533/premium/1533105.png?token=exp=1650421153~hmac=e2d389f4484493eaaf7f7c8e6f5bf942",
+        botAvatarInitials: "BF",
+        userAvatarImage:
+          "https://cdn-icons-png.flaticon.com/512/1077/1077012.png",
+        userAvatarInitials: "WC",
+      };
+
+      window.WebChat.renderWebChat(
+        {
+          directLine: window.WebChat.createDirectLine({
+            token: "ED-fRZ6QAgg.Qzh84NM8HAK4NTwg97SJYbTtmWoYC2bLgaTHXayxjUQ",
+          }),
+          styleSet,
+        },
+        document.getElementById("webchat")
+      );
+    </script>
+  </body>
+</html>
