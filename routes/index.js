@@ -7,26 +7,41 @@ const userService=new UserService();
 
 router.get("/",async (req,res)=>{
     let data=null;
-
-    //checking the length of the cookies object, to see if the user is logged in or not
-    if(Object.keys(req.cookies).length!==0){
+    
+    //checking if the cookie exists, to see if the user is logged in or not
+    if(req.cookies["secret"]!==undefined){
         
         //verifying guest to get the user id of the user in request header
-        await verifyGuest(req,res,async()=>{
+        const response=await verifyGuest(req,res,async()=>{
             const user=await userService.getUser(req,res); //getting user info from the database
-            data={
-                city:user.city,
-                state:user.state,
-                pincode:user.pincode,
-                apiKey:process.env.API_KEY
+            
+            //if user exists
+            if(user!==null){
+                
+                data={
+                    city:user.city,
+                    state:user.state,
+                    pincode:user.pincode,
+                    apiKey:process.env.API_KEY
+                }
+                //making the map link for the logged in user
+                let link=`https://www.google.com/maps/embed/v1/search?key=${data.apiKey}&q=garbage+dump+in+${data.city}+${data.state}+India+near+${data.pincode}`;
+            
+                res.render("home",{"data":link});
             }
-            let link=`https://www.google.com/maps/embed/v1/search?key=${data.apiKey}&q=garbage+dump+in+${data.city}+${data.state}+India+near+${data.pincode}`;
-        
-            res.render("home",{"data":link});
+            else{
+                res.render("home",{"data":null});
+            }
         });
+
+        if(response){
+            res.render("home",{"data":null});
+        }
     }
-    // console.log(data);
+    
+    //if the user is not logged in we simply render the home page
     else{
+        console.log(data);
         res.render("home",{"data":data});
     }
 })

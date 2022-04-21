@@ -41,6 +41,12 @@
             <li class="nav-item">
               <a class="nav-link" href="#footer">Contact Us</a>
             </li>
+
+            <%if(data!==null){%>
+              <li class="nav-item">
+                <a class="nav-link btn btn-primary" href="/auth/logout" role="button">Logout</a>
+              </li>
+            <%}%>
           </ul>
         </div>
       </nav>

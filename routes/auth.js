@@ -5,6 +5,7 @@ const UserService = require("../services/user");
 
 const userService=new UserService();
 const verify=require("../middlewares/verify");
+const res = require("express/lib/response");
 
 let authService=new AuthService();
 

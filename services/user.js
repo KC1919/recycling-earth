@@ -12,7 +12,7 @@ class UserService {
             const saltRounds = 10;
             // console.log(req.body);
             const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
-            console.log(hashPassword);
+            // console.log(hashPassword);
 
             const user = {
                 "fname": req.body.fname,
@@ -25,11 +25,17 @@ class UserService {
                 "pincode": req.body.pincode
             }
             const newUser = await User.create(user);
-            console.log("User created successfully!");
-            res.status(201).json({
-                message: "User created Successfully!",
-                user: newUser
-            });
+
+            if(newUser!==null){
+                console.log("User created successfully!");
+                // res.status(201).json({
+                //     message: "User created Successfully!",
+                //     user: newUser
+                // });
+                res.send({redirectTo:'/auth/login'});
+            }else{
+                res.send({redirectTo:'/auth/login',message:"invalid"});
+            }
         } catch (error) {
             console.log("Failed to create user");
             res.status(500).json({
