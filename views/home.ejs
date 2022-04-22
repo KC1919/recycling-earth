@@ -74,14 +74,14 @@
             </li>
 
             <%if(data!==null){%>
-              <li class="nav-item">
-                <a class="nav-link btn btn-primary" href="/auth/logout" role="button">Logout</a>
+              <li class="nav-item" onMouseOver="this.style.color='#95cd41'" style="position: relative;left:10%">
+                <a class="btn btn-primary" href="/auth/logout" role="button">Logout</a>
               </li>
             <%}%>
 
             <%if(data==null){%>
               <li class="nav-item" style="position: relative;left:10%">
-                <a class="btn btn-primary" style="background-color: #95cd41;"href="/auth/login" role="button">Login</a>
+                <a class="btn btn-primary" style="background-color: #95cd41;" href="/auth/login" role="button">Login</a>
               </li>
             <%}%>
 
