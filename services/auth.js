@@ -30,50 +30,44 @@ class authService {
                 const saltRounds = 10; //salt rounds used for hashing the password
 
                 //comparing user entered password with saved user password
-                bcrypt.compare(req.body.password, user.password, async (err, result) => {
+                let result = await bcrypt.compare(req.body.password, user.password)
 
-                    if (err) {
-                        //Invalid credentials
-                        console.log("Invalid username or password");
+                if (result === true) {
+                    console.log(result);
+                    //creating token with userId as payload
+                    const token = await jwt.sign({
+                        userId: user._id
+                    }, process.env.SECRET_KEY);
 
-                        return res.status(401).json({
-                            message: "invalid"
-                        });
-                    } else if (result === true) {
-                        console.log(result);
-                        //creating token with userId as payload
-                        const token = await jwt.sign({
-                            userId: user._id
-                        }, process.env.SECRET_KEY);
+                    //embedding the token inside the cookie
+                    const setCookie = await res.cookie('secret', token, {
+                        maxAge: 86400,
+                        httpOnly: true
+                    });
 
-                        //embedding the token inside the cookie
-                        const setCookie = await res.cookie('secret', token, {
-                            maxAge: 86400,
-                            httpOnly: true
-                        });
+                    // console.log(setCookie);
 
-                        // console.log(setCookie);
-
-                        if (Object.keys(setCookie).length !== 0) {
-                            console.log("Logged in Successfully");
-                            // return res.status(200).json("Successful login");
-                            res.send({
-                                redirectTo: '/',
-                                message: "success"
-                            }) //redirecting to home route after successfull login
-                        }
-                    } else if(result===false){
-                        
-                        return res.status(401).json({
-                            message: "failure"
-                        })
+                    if (Object.keys(setCookie).length !== 0) {
+                        console.log("Logged in Successfully");
+                        // return res.status(200).json("Successful login");
+                        res.send({
+                            redirectTo: '/',
+                            message: "success"
+                        }) //redirecting to home route after successfull login
+                    }else{
+                        return res.status.json(401).json({message:"Problem logging in!"});
                     }
-                });
+                } else if (result === false) {
+
+                    return res.status(401).json({
+                        message: "Invalid Email or Password"
+                    })
+                }
 
             } else { //User not present in the database
                 console.log("User not found");
-                return res.status(401).json({
-                    message: "failure"
+                return res.status(404).json({
+                    message: "Use does not exist"
                 })
             }
 

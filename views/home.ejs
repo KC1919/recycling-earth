@@ -1,14 +1,47 @@
 <html>
-<%-include('partials/header.ejs')%>
-  <link rel="stylesheet" href="/css/style.css" />
+
+<head>
+  <meta charset="utf-8">
   <title>RecylingEarth</title>
+  <link rel="icon" href="images/favicon.png">
+
+
+
+  <!-- Styling Sheets -->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Montserrat:wght@100;400;900&family=Montserrat:wght@100;400;900&family=Open+Sans&&family=Oswald:wght@300&family=Roboto:wght@300;400&display=swap"
+    rel="stylesheet">
+
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/849c3de797.js" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
 </head>
 
-<body style="margin: 0;">
-  <section id="title" style="margin: 0;">
+
+<body>
+  <section id="title">
     <div class="container-fluid">
       <!-- Nav Bar -->
-      <nav class="navbar navbar-expand-lg navbar-dark" style=" background-color: #064635;">
+      <nav class="navbar navbar-expand-lg navbar-dark" style=" background-color: #1C7947;">
         <img class="logo-image" src="images/logo.jpg" alt="Logo">
 
 
@@ -25,21 +58,19 @@
             <li class="nav-item">
               <a class="nav-link" href="/auth/register">Join Us</a>
             </li>
-
             <%if(data!==null){%>
               <li class="nav-item">
                 <a class="nav-link" href="#Locate-dustbin">Locate Dustbin</a>
               </li>
             <%}%>
-
             <li class="nav-item">
-              <a class="nav-link" href="#Heros">Our Heros</a>
+              <a class="nav-link" href="#Heros">Our Heroes</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#About-Us">About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#footer">Contact Us</a>
+              <a class="nav-link" href="/articles">Articles</a>
             </li>
 
             <%if(data!==null){%>
@@ -47,149 +78,248 @@
                 <a class="nav-link btn btn-primary" href="/auth/logout" role="button">Logout</a>
               </li>
             <%}%>
+
+
           </ul>
-        </div>
-      </nav>
+       
+</body>
 
-    </div>
-  </section>
+</div>
+</nav>
 
-  <!-- Introduction Section-->
+</div>
+</section>
 
-  <section id="intro">
-    <div class="row introduction">
-      <div class="intro intro1 col-md-12 ">
-        <img class="img1 " src="images/waste-man.jpg" alt="images\waste-man.jpg">
-      </div>
-      <div class="intro intro2 col-md-12 ">
-        <h3>"Welcome to Waste Management Portal"</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.</p>
-        <a href="/know-more"><button class="btn"> Know More </button></a>
-      </div>
-    </div>
-  </section>
+<!-- Introduction Section-->
 
-
-  <!-- Join-Us Section -->
-
-  
-  <!-- Locate Dustbin -->
-  <%if(data!==null){%>
-    <section id="Locate-dustbin">
-      <h1 class="h-primary center">Locate Dustbin Nearby</h1>
-      <div class="container" id="Dustbin" style="text-align: center;">
-        <iframe
-        width="1000"
-        height="500"
-        frameborder="0"
-        style="border: 0"
-        referrerpolicy="no-referrer-when-downgrade"
-        src=<%=data%>
-        allowfullscreen
-      >
-      </iframe>
-      </div>
-    </section>
-  <%}%>
-
-
-  <!-- Heros Section -->
-
-  <section id="Heros">
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <h2 class="testimonial-text">She trained around 14 housekeepers in segregating the dry waste and processing the wet waste in the newly purchased unit. The staff is divided into three teams and functions on shift basis.</h2>
-          <img class="heros-image" src="images/savita-bengaluru.png" alt="lady-profile">
-          <em>Savita, Bengaluru</em>
-        </div>
-        <div class="carousel-item">
-          <h2 class="testimonial-text">Ahmedabad-based startup Ishitva offers AI solutions to effectively identify and sort dry waste to ensure that most recyclable waste is put to use as a repurposed product.</h2>
-          <img class="heros-image" src="images/boy.jpg" alt="lady-profile">
-          <em>Jitesh Dadlani and Sandip Singh</em>
-        </div>
-        <div class="carousel-item">
-          <h2 class="testimonial-text">Project Palaash aims to utilise floral waste, which amounts to one-third of total solid waste, to create organic dyes which are purely non-synthetic.</h2>
-          <img class="heros-image" src="images/girl1.png" alt="lady-profile">
-          <em>Young entrepreneurs of Enactus Aryabhatta</em>
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only"></span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only"></span>
-      </a>
-    </div>
-  </section>
-
-
-  <!-- About-Us -->
-
-  <section id="About-Us">
-    <h2>About Us</h2>
-    <div class="row">
-      <div class="col-lg-3 col-sm-6">
-        <img class="mem-img" src="images/Kunal.jpg" alt="img">
-        <p>Kunal Chandra</p>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <img class="mem-img" src="images/jasleen.jpeg" alt="img">
-        <p>Jasleen Kaur</p>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <img class="mem-img" src="images/ashutoshh.jpg" alt="img">
-        <p>Ashutosh Soni</p>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <img class="mem-img" src="images/ujjwal.jpg" alt="img">
-        <p>Ujjwal Sengar</p>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <img class="mem-img" src="images/ranjan.jpeg" alt="img">
-        <p>Ranjan Kudesia</p>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <img class="mem-img" src="images/nandita.jpg" alt="img">
-        <p>Nandita Jain</p>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <img class="mem-img" src="images/yatharth.jpeg" alt="img">
-        <p>Yatharth Gupta</p>
-      </div>
+<section id="intro">
+  <div class="row introduction">
+    <div class="intro intro1 col-md-12 ">
+      <img class="img1 " src="https://images.hindustantimes.com/rf/image_size_630x354/HT/p2/2020/01/18/Pictures/startup-farm-waste-management-for-web_8d0769d6-39e7-11ea-a000-1a9cfcbfa41b.jpg" alt="images\waste-man.jpg">
       
-      <div class="col-lg-3 col-sm-6">
-        <img class="mem-img" src="images/kush.JPG" alt="img">
-        <p>Kush Khare</p>
+    </div>
+    <div class="intro newimg ">
+      <img class="imgnew " src="images/momearth.jpeg" alt="images\dustbins.jpg">
+    </div>
+    <!-- <div class="dust-img">
+      <img class ="dust" src="https://ak.picdn.net/shutterstock/videos/1035991619/thumb/4.jpg" alt="">
+    </div> -->
+    <div class="intro intro2 col-md-12 ">
+      
+      <h3>"Welcome to Waste Management Portal"</h3>
+      <p>Waste management comprises of a collective activity of segregation, collection, transportation, recycling and
+        disposal of waste. Improper waste management is one of the main causes environment pollution. In India, the
+        Union Ministry of
+        Environment, Forests and Climate Change is responsible for regulating and managing waste. One of the main
+        activities of the ministry is prevention and control of pollution, and it has released many rules over the years
+        to safely handle
+        and dispose waste to ensure a clean environment. The Central Pollution Control Board and State Pollution Control
+        Board ensure proper management of rules set forth by the MoEFCC.</p>
+      <br>
+      <a href="know-more.html"><button class="btn"> Know More </button></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Join-Us Section -->
+
+<!-- <section id="Join">
+  <h2 class="join-head">Join Us Now !!!</h2>
+  <div class="row Join">
+    <div class="col-lg-6" id="Join-box">
+      <form action="">
+        <div class="form-group">
+          <label for="name"> </label>
+          <br>
+          <input type="text" name="name" id="name" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <label for="email"> </label>
+          <br>
+          <input type="email" name="name" id="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <label for="phone"> </label>
+          <br>
+          <input type="phone" name="name" id="phone" placeholder="Phone Number">
+        </div>
+        <div class="form-group">
+          <label for="message"></label>
+          <br>
+          <textarea name="message" id="message" cols="20" rows="5" placeholder="Type Your Message here"></textarea>
+        </div>
+        <div class="form-group">
+          <button id="btn-Join" type="submit">
+            Join Now
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="join-us col-lg-6">
+      <h2 class="join-us">"The primary goal of our portal is to prepare a community to effectively manage waste , Go
+        Green - Reduce |Reuse |Recycle. "</h2>
+      <br>
+      <h2 class="join-us">"When you refuse to Reuse , it's the Earth you abuse."</h2>
+      <div class="row">
+        <div class="join-icon ">
+          <i class="icon fa-solid fa-users fa-4x"></i>
+          <i class="icon fa-solid fa-dumpster fa-4x"></i>
+          <i class="icon fa-solid fa-recycle fa-4x"></i>
+          <i class="icon fa-solid fa-earth-americas fa-4x"></i>
+        </div>
+      </div>
+    </div>
+</section> -->
+
+
+<!-- Locate Dustbin -->
+<!-- Locate Dustbin -->
+<%if(data!==null){%>
+  <section id="Locate-dustbin">
+    <h1 class="h-primary center">Locate Dustbin Nearby</h1>
+    <div class="container" id="Dustbin" style="text-align: center;">
+      <iframe
+      width="1000"
+      height="500"
+      frameborder="0"
+      style="border: 0"
+      referrerpolicy="no-referrer-when-downgrade"
+      src=<%=data%>
+      allowfullscreen
+    >
+    </iframe>
+    </div>
+  </section>
+<%}else{%>
+
+  <section id="Locate-dustbin">
+    <h1 class="h-primary center">Locate nearby Dumping Ground</h1>
+    <div id="Dustbin">
+      <p> Several, countries are struggling to establish proper waste management systems in the context of increasing
+        population and urbanization. Urban solid waste management system needs solid waste management technique, where
+        presence of a sanitary
+        landfill is vital. One of the most important issues of sanitary landfill is to identify suitable locations.
+        Research was conducted to identify suitable solid waste disposal sites that are economically feasible,
+        environmentally sound, and
+        socially acceptable in Logia town, Ethiopia, applying Remote Sensing and Geographic Information System techniques,
+        which was based on thematic maps such as groundwater well points, slope, fault, built-up area, road network,
+        river, land-use/land-cover,
+        geology and soil map. Analytical Hierarchy Process pair-wise comparison model was used to accomplish weights of
+        factor parameters. Suitability map was prepared by overlay analyses and assigned as highly suitable, suitable,
+        moderately suitable,
+        less suitable and unsuitable. Results show that 5.93% of the study area is highly suitable, 6.5% is suitable,
+        3.23% is moderately suitable, 1.02% is less suitable and 83.32% is unsuitable for solid waste dumping in Logia
+        town. Field observations
+        also confirmed suitability of the selected sites, and hence this method can be used in urban areas for waste
+        dumping site selection procedure. Selected sites are considered to be suitable for landfill to minimize
+        environmental risk and
+        human health problems.</p>
+    </div>
+  </section>
+<%}%>
+
+
+<!-- Heros Section -->
+
+<section id="Heros">
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <h2 class="testimonial-text">She trained around 14 housekeepers in segregating the dry waste and processing the
+          wet waste in the newly purchased unit. The staff is divided into three teams and functions on shift basis.
+        </h2>
+        <img class="heros-image" src="images\savita-bengaluru.png" alt="lady-profile">
+        <em>Savita, Bengaluru</em>
 
       </div>
+      <div class="carousel-item">
+        <h2 class="testimonial-text">Ahmedabad-based startup Ishitva offers AI solutions to effectively identify and
+          sort dry waste to ensure that most recyclable waste is put to use as a repurposed product.</h2>
+        <img class="heros-image" src="images/pushpa.jpeg" alt="lady-profile">
+        <em>Jitesh Khan and Sandip Singh</em>
+      </div>
+      <div class="carousel-item">
+        <h2 class="testimonial-text">Project Palaash aims to utilise floral waste, which amounts to one-third of total
+          solid waste, to create organic dyes which are purely non-synthetic.</h2>
+        <img class="heros-image" src="images/enactus.jpeg">
+        <em>Young entrepreneurs of Enactus Aryabhatta</em>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only"></span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only"></span>
+    </a>
+  </div>
+</section>
+
+
+<!-- About-Us -->
+
+<section id="About-Us">
+  <h2>About Us</h2>
+  <div class="row">
+    <div class="col-lg-3 col-sm-6">
+      <img class="mem-img" src="images/ranjan.jpeg" alt="img">
+      <p>Ranjan Kudesia</p>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <img class="mem-img" src="images/ujjwal.jpg" alt="img">
+      <p>Ujjwal Sengar</p>
+    </div>
+    
+    <div class="col-lg-3 col-sm-6">
+      <img class="mem-img" src="images/yatharth.jpeg" alt="img">
+      <p>Yatharth Gupta</p>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <img class="mem-img" src="images/nandita.jpg" alt="img">
+      <p>Nandita Jain</p>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <img class="mem-img" src="images/ashutoshh.jpg" alt="img">
+      <p>Ashutosh Soni</p>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <img class="mem-img" src="images/jasleen.jpeg" alt="img">
+      <p>Jasleen Kaur</p>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <img class="mem-img" src="images/Kunal.jpg" alt="img">
+      <p>Kunal Chandra</p>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <img class="mem-img" src="images/kush.JPG" alt="img">
+      <p>Kush Khare</p>
 
     </div>
 
-  </section>
+  </div>
 
-  <!--Chatbot-->
+</section>
+
+
+<!--Chatbot-->
 <div class="chaticon">
-  <!-- https://support.upwork.com/hc/article_attachments/360040474034/chatbot-data.png -->
-  <a href="/chat-bot"><img class="chaticonimg" src="images/bot.png" alt="BotImage"></a>
+  <a href="ChatBot.html"><img class="chaticonimg" src="https://support.upwork.com/hc/article_attachments/360040474034/chatbot-data.png" alt="BotImage"></a>
 </div>
    <!-- contact us-->
    <section>
-    <div class="contactbt" style="margin-bottom: 10px;text-align: center;">
-      <a class="btn btn-sm-primary" href="https://forms.gle/7T7koZSxgbRoqRbc7" role="button">Contact Us</a>
+    <div class="contactbt" style="text-align: center;margin-bottom: 15px;">
+      <a class="btncontact" href="https://forms.gle/7T7koZSxgbRoqRbc7">Contact Us</a>
     </div>
   </section>
-</body>
 
-<!-- Contact -us -->
+
+
+
 
 <footer id="footer">
+
   <i class="ico fa-brands fa-facebook"></i>
   <i class="ico fa-brands fa-instagram"></i>
   <i class="ico fa-brands fa-twitter"></i>

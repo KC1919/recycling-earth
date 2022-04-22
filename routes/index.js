@@ -55,5 +55,9 @@ router.get("/chat-bot",(req,res)=>{
 })
 router.get("/secret",verifyGuest,(req,res)=>{
     res.render("secret");
+});
+
+router.get("/articles",(req,res)=>{
+    res.render("articles");
 })
 module.exports=router;
